@@ -116,8 +116,16 @@ void ll_destroy(struct ll_node *head) {
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Adds a new node with value `data` to the end of the list.
+ * If head is NULL, we do nothing (caller should have a valid list).
+ */
 void ll_append(struct ll_node *head, int data) {
- 
+    if (head == NULL) return;                 
+    struct ll_node *tail = ll_tail(head);     
+    struct ll_node *node = ll_create(data);   
+    if (node == NULL) return;                 
+    tail->next = node;                        
 }
 
 /**
