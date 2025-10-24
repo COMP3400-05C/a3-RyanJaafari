@@ -1,5 +1,7 @@
 #include "list.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
 // TODO: Include any necessary header files here
 
 /**
