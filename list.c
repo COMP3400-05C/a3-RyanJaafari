@@ -17,10 +17,17 @@ struct ll_node *ll_head(struct ll_node *head) {
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Counts how many nodes are in the list.
+ * If the list is empty (head == NULL), the count is 0.
+ */
 struct ll_node *ll_tail(struct ll_node *head) {
-    
+    if (head == NULL) return NULL;
+    while (head->next != NULL) {
+        head = head->next;   
+    }
+    return head;
 }
-
 /**
  * TODO: Describe what the function does
  */
