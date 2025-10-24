@@ -131,8 +131,27 @@ void ll_append(struct ll_node *head, int data) {
 /**
  * TODO: Describe what the function does
  */
-struct ll_node *ll_fromarray(int* data, int len) {
-
+/**
+ * Builds a new linked list from the array `data` of length `len`.
+ * Returns the head of the new list.
+ * If len <= 0 or data == NULL, return NULL.
+ * Uses a moving `tail` pointer so appends are O(1).
+ */
+struct ll_node *ll_fromarray(int *data, int len) {
+    if (data == NULL || len <= 0) return NULL;
+    struct ll_node *head = ll_create(data[0]);
+    if (head == NULL) return NULL;  
+    struct ll_node *tail = head;
+    for (int i = 1; i < len; i++) {
+        struct ll_node *node = ll_create(data[i]);
+        if (node == NULL) {
+            ll_destroy(head);        
+            return NULL;
+        }
+        tail->next = node;          
+        tail = node;                 
+    }
+    return head;
 }
 
 /**
