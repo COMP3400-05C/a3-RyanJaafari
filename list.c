@@ -47,9 +47,20 @@ int ll_size(struct ll_node *head) {
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Looks through the list for the first node whose data == value.
+ * If found, return that node. If not found (or list is empty), return NULL.
+ */
 struct ll_node *ll_find(struct ll_node *head, int value) {
-   
+    while (head != NULL) {           
+        if (head->data == value) {   
+            return head;             
+        }
+        head = head->next;           
+    }
+    return NULL;                     
 }
+
 
 /**
  * TODO: Describe what the function does
