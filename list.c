@@ -86,15 +86,31 @@ int *ll_toarray(struct ll_node *head) {
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Makes one new node with the given value.
+ * Returns the new node, or NULL if memory cannot be allocated.
+ */
 struct ll_node *ll_create(int data) {
-   
+    struct ll_node *node = (struct ll_node *)malloc(sizeof(struct ll_node));
+    if (node == NULL) return NULL;   
+    node->data = data;
+    node->next = NULL;               
+    return node;
 }
 
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Frees every node in the list.
+ * Safe to call with head == NULL.
+ */
 void ll_destroy(struct ll_node *head) {
-    
+    while (head != NULL) {
+        struct ll_node *next = head->next; 
+        free(head);                          
+        head = next;                         
+    }
 }
 
 /**
