@@ -157,7 +157,28 @@ struct ll_node *ll_fromarray(int *data, int len) {
 /**
  * TODO: Describe what the function does
  */
+/*
+remove first node with data == value
+free that node
+return the new head (same if not removed)
+*/
 struct ll_node *ll_remove(struct ll_node *head, int value) {
-
+    if (head == NULL) return NULL;
+    if (head->data == value) {
+        struct ll_node *new_head = head->next;
+        free(head);
+        return new_head;
+    }
+    struct ll_node *prev = head;
+    struct ll_node *cur  = head->next;
+    while (cur != NULL) {
+        if (cur->data == value) {
+            prev->next = cur->next;
+            free(cur);
+            return head;
+        }
+        prev = cur;
+        cur  = prev->next;
+    }
+    return head;
 }
-
