@@ -18,8 +18,8 @@ struct ll_node *ll_head(struct ll_node *head) {
  * TODO: Describe what the function does
  */
 /**
- * Counts how many nodes are in the list.
- * If the list is empty (head == NULL), the count is 0.
+ * Gives you the last node in the list.
+ * If the list is empty (head == NULL), it gives back NULL.
  */
 struct ll_node *ll_tail(struct ll_node *head) {
     if (head == NULL) return NULL;
@@ -31,8 +31,17 @@ struct ll_node *ll_tail(struct ll_node *head) {
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Counts how many nodes are in the list.
+ * If the list is empty (head == NULL), the count is 0.
+ */
 int ll_size(struct ll_node *head) {
-  
+    int count = 0;
+    while (head != NULL) {
+        count++;
+        head = head->next;  // move to the next node
+    }
+    return count;
 }
 
 /**
