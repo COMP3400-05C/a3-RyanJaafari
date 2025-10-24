@@ -65,8 +65,22 @@ struct ll_node *ll_find(struct ll_node *head, int value) {
 /**
  * TODO: Describe what the function does
  */
+/**
+ * Makes a new array from the list values, in order.
+ * If the list is empty, return NULL.
+ * The caller (tests) will free the array.
+ */
 int *ll_toarray(struct ll_node *head) {
-   
+    int n = ll_size(head);
+    if (n == 0) return NULL;
+
+    int *arr = (int *)malloc((size_t)n * sizeof(int));
+    if (arr == NULL) return NULL;  
+
+    for (int i = 0; i < n; i++, head = head->next) {
+        arr[i] = head->data;
+    }
+    return arr;
 }
 
 /**
